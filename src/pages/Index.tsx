@@ -129,14 +129,14 @@ const Index = () => {
               Why this is a win-win
             </p>
             <h2 className="font-display font-bold text-4xl md:text-6xl tracking-tight max-w-3xl">
-              A unique opportunity for <span className="text-gradient-magenta">both sides</span>.
+              A unique opportunity for <span className="text-primary">both sides</span>.
             </h2>
           </Reveal>
 
           <div className="mt-14 grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {stats.map((s, i) => (
               <Reveal key={s.label} delay={i * 80}>
-                <div className="group relative h-full bg-card border border-border/80 rounded-3xl p-6 md:p-8 hover:-translate-y-1 hover:shadow-card transition-all duration-300">
+                <div className="group relative h-full bg-card border border-border/80 rounded-none p-6 md:p-8 hover:-translate-y-1 hover:shadow-card transition-all duration-300">
                   <div className="flex items-center justify-between mb-6">
                     <Diamond size={28} variant={s.variant} />
                     <s.Icon className="h-5 w-5 text-muted-foreground" />
@@ -188,7 +188,7 @@ const Index = () => {
 
           <div className="mt-14 grid md:grid-cols-2 gap-6">
             <Reveal>
-              <article className="relative h-full overflow-hidden bg-card border border-border rounded-3xl p-8 md:p-10">
+              <article className="relative h-full overflow-hidden bg-card border border-border rounded-none p-8 md:p-10">
                 <Diamond size={40} variant="magenta" className="mb-8" />
                 <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-2">
                   WE Program
@@ -206,7 +206,7 @@ const Index = () => {
             </Reveal>
 
             <Reveal delay={100}>
-              <article className="relative h-full overflow-hidden bg-ink text-ink-foreground rounded-3xl p-8 md:p-10">
+              <article className="relative h-full overflow-hidden bg-ink text-ink-foreground rounded-none p-8 md:p-10">
                 <DiamondField density="low" tone="dark" />
                 <div className="relative">
                   <Diamond size={40} variant="gold" className="mb-8" />
@@ -238,15 +238,15 @@ const Index = () => {
               The event
             </p>
             <h2 className="font-display font-bold text-4xl md:text-6xl tracking-tight max-w-3xl">
-              Three days. <span className="text-gradient-magenta">Three pillars.</span>
+              Three days. <span className="text-primary">Three pillars.</span>
             </h2>
           </Reveal>
 
           <div className="mt-14 grid md:grid-cols-3 gap-5">
             {eventPillars.map((p, i) => (
               <Reveal key={p.title} delay={i * 80}>
-                <div className="h-full bg-card border border-border rounded-3xl p-8 hover:-translate-y-1 transition-transform duration-300">
-                  <div className="h-14 w-14 rounded-2xl gradient-magenta flex items-center justify-center text-primary-foreground mb-6">
+                <div className="h-full bg-card border border-border rounded-none p-8 hover:-translate-y-1 transition-transform duration-300">
+                  <div className="h-14 w-14 rounded-none bg-primary flex items-center justify-center text-primary-foreground mb-6">
                     <p.Icon className="h-6 w-6" />
                   </div>
                   <p className="font-display font-bold text-2xl md:text-3xl tracking-tight">
@@ -259,7 +259,7 @@ const Index = () => {
           </div>
 
           <Reveal>
-            <div className="mt-10 grid sm:grid-cols-3 gap-4 bg-card border border-border rounded-3xl p-6 md:p-8">
+            <div className="mt-10 grid sm:grid-cols-3 gap-4 bg-card border border-border rounded-none p-6 md:p-8">
               {[
                 { Icon: Users, label: "Participation", value: "Teams of 1–3 (self-formed or matched)" },
                 { Icon: Send, label: "Submissions", value: "Repo + video demo + resume drive" },
@@ -294,7 +294,7 @@ const Index = () => {
             {steps.map((s, i) => (
               <Reveal key={s.n} delay={i * 70}>
                 <div className="relative h-full">
-                  <div className="bg-card border border-border rounded-3xl p-6 h-full hover:border-primary/50 transition-colors">
+                  <div className="bg-card border border-border rounded-none p-6 h-full hover:border-primary/50 transition-colors">
                     <div className="flex items-center gap-3 mb-4">
                       <Diamond size={18} variant={i % 2 ? "purple" : "magenta"} />
                       <span className="font-display font-bold text-sm text-muted-foreground">{s.n}</span>
@@ -317,13 +317,13 @@ const Index = () => {
               Awards
             </p>
             <h2 className="font-display font-bold text-4xl md:text-6xl tracking-tight max-w-3xl">
-              Every winner earns <span className="text-gradient-magenta">a real shot.</span>
+              Every winner earns <span className="text-primary">a real shot.</span>
             </h2>
           </Reveal>
 
           <div className="mt-14 grid md:grid-cols-2 gap-6">
             <Reveal>
-              <div className="h-full bg-card border border-border rounded-3xl p-8 md:p-10 relative overflow-hidden">
+              <div className="h-full bg-card border border-border rounded-none p-8 md:p-10 relative overflow-hidden">
                 <Trophy className="absolute -top-6 -right-6 h-40 w-40 text-primary/10" />
                 <Diamond size={32} variant="magenta" className="mb-6" />
                 <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2">Per company</p>
@@ -334,7 +334,7 @@ const Index = () => {
               </div>
             </Reveal>
             <Reveal delay={100}>
-              <div className="h-full bg-ink text-ink-foreground rounded-3xl p-8 md:p-10 relative overflow-hidden">
+              <div className="h-full bg-ink text-ink-foreground rounded-none p-8 md:p-10 relative overflow-hidden">
                 <Sparkles className="absolute -top-4 -right-4 h-32 w-32 text-gold/30" />
                 <Diamond size={32} variant="gold" className="mb-6" />
                 <p className="text-xs uppercase tracking-[0.2em] text-ink-foreground/60 mb-2">Community vote</p>
@@ -354,7 +354,7 @@ const Index = () => {
           <div className="grid md:grid-cols-2 gap-6">
             <Reveal>
               <Link to="/recruiters" className="group block h-full">
-                <div className="relative h-full overflow-hidden bg-card border border-border rounded-3xl p-8 md:p-10 hover:border-primary/60 hover:-translate-y-1 transition-all">
+                <div className="relative h-full overflow-hidden bg-card border border-border rounded-none p-8 md:p-10 hover:border-primary/60 hover:-translate-y-1 transition-all">
                   <Diamond size={32} variant="magenta" className="mb-6" />
                   <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-2">For recruiters</p>
                   <h3 className="font-display font-bold text-3xl md:text-4xl tracking-tight">
@@ -371,7 +371,7 @@ const Index = () => {
             </Reveal>
             <Reveal delay={100}>
               <Link to="/sponsors" className="group block h-full">
-                <div className="relative h-full overflow-hidden bg-ink text-ink-foreground rounded-3xl p-8 md:p-10 hover:-translate-y-1 transition-all">
+                <div className="relative h-full overflow-hidden bg-ink text-ink-foreground rounded-none p-8 md:p-10 hover:-translate-y-1 transition-all">
                   <DiamondField density="low" tone="dark" />
                   <div className="relative">
                     <Diamond size={32} variant="gold" className="mb-6" />

@@ -45,7 +45,7 @@ const Recruiters = () => {
         <div className="absolute inset-0 grid-pattern-dark" aria-hidden />
         <DiamondField density="medium" tone="dark" />
         <div
-          className="absolute top-1/2 left-1/4 w-[600px] h-[600px] rounded-full -translate-y-1/2"
+          className="absolute top-1/2 left-1/4 w-[600px] h-[600px] rounded-none -translate-y-1/2"
           style={{ background: "var(--gradient-glow)" }}
           aria-hidden
         />
@@ -57,7 +57,7 @@ const Recruiters = () => {
           </Reveal>
           <Reveal delay={80}>
             <h1 className="font-display font-bold text-5xl md:text-7xl lg:text-8xl tracking-tight leading-[0.95] max-w-4xl">
-              Hire engineers who <span className="text-gradient-magenta">build, ship, and present</span>.
+              Hire engineers who <span className="text-primary">build, ship, and present</span>.
             </h1>
           </Reveal>
           <Reveal delay={160}>
@@ -83,9 +83,9 @@ const Recruiters = () => {
           <div className="mt-14 grid md:grid-cols-2 gap-5">
             {why.map((f, i) => (
               <Reveal key={f.title} delay={i * 70}>
-                <div className="h-full bg-card border border-border rounded-3xl p-7 md:p-8 hover:-translate-y-1 transition-all">
+                <div className="h-full bg-card border border-border rounded-none p-7 md:p-8 hover:-translate-y-1 transition-all">
                   <div className="flex items-start gap-5">
-                    <div className="h-12 w-12 rounded-2xl gradient-magenta text-primary-foreground flex items-center justify-center shrink-0">
+                    <div className="h-12 w-12 rounded-none bg-primary text-primary-foreground flex items-center justify-center shrink-0">
                       <f.Icon className="h-5 w-5" />
                     </div>
                     <div>
@@ -115,7 +115,7 @@ const Recruiters = () => {
           <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {gets.map((g, i) => (
               <Reveal key={g.title} delay={i * 60}>
-                <div className="h-full bg-card border border-border rounded-3xl p-7 hover:border-primary/50 transition-colors">
+                <div className="h-full bg-card border border-border rounded-none p-7 hover:border-primary/50 transition-colors">
                   <Diamond size={20} variant={i % 2 ? "purple" : "magenta"} className="mb-5" />
                   <div className="flex items-center gap-3 mb-3">
                     <g.Icon className="h-5 w-5 text-primary" />
@@ -144,7 +144,7 @@ const Recruiters = () => {
           <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {how.map((s, i) => (
               <Reveal key={s.title} delay={i * 80}>
-                <div className="relative h-full bg-card border border-border rounded-3xl p-7">
+                <div className="relative h-full bg-card border border-border rounded-none p-7">
                   <div className="font-display font-bold text-5xl text-primary/15 mb-2">0{i + 1}</div>
                   <div className="flex items-center gap-3 mb-3">
                     <s.Icon className="h-5 w-5 text-primary" />

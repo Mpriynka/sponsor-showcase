@@ -72,7 +72,7 @@ const Sponsors = () => {
         <div className="absolute inset-0 grid-pattern-dark" aria-hidden />
         <DiamondField density="medium" tone="dark" />
         <div
-          className="absolute top-1/2 right-1/4 w-[600px] h-[600px] rounded-full -translate-y-1/2"
+          className="absolute top-1/2 right-1/4 w-[600px] h-[600px] rounded-none -translate-y-1/2"
           style={{ background: "var(--gradient-glow)" }}
           aria-hidden
         />
@@ -84,7 +84,7 @@ const Sponsors = () => {
           </Reveal>
           <Reveal delay={80}>
             <h1 className="font-display font-bold text-5xl md:text-7xl lg:text-8xl tracking-tight leading-[0.95] max-w-4xl">
-              Back the next class of <span className="text-gradient-magenta">women engineers</span>.
+              Back the next class of <span className="text-primary">women engineers</span>.
             </h1>
           </Reveal>
           <Reveal delay={160}>
@@ -103,16 +103,16 @@ const Sponsors = () => {
               Why sponsor
             </p>
             <h2 className="font-display font-bold text-4xl md:text-5xl tracking-tight max-w-3xl">
-              Sponsorship that <span className="text-gradient-magenta">moves the needle</span>.
+              Sponsorship that <span className="text-primary">moves the needle</span>.
             </h2>
           </Reveal>
 
           <div className="mt-14 grid md:grid-cols-2 gap-5">
             {why.map((f, i) => (
               <Reveal key={f.title} delay={i * 70}>
-                <div className="h-full bg-card border border-border rounded-3xl p-7 md:p-8 hover:-translate-y-1 transition-all">
+                <div className="h-full bg-card border border-border rounded-none p-7 md:p-8 hover:-translate-y-1 transition-all">
                   <div className="flex items-start gap-5">
-                    <div className="h-12 w-12 rounded-2xl gradient-magenta text-primary-foreground flex items-center justify-center shrink-0">
+                    <div className="h-12 w-12 rounded-none bg-primary text-primary-foreground flex items-center justify-center shrink-0">
                       <f.Icon className="h-5 w-5" />
                     </div>
                     <div>
@@ -146,8 +146,8 @@ const Sponsors = () => {
                 <div
                   className={
                     t.highlight
-                      ? "relative h-full bg-ink text-ink-foreground rounded-3xl p-8 shadow-elevated overflow-hidden md:-translate-y-3"
-                      : "relative h-full bg-card border border-border rounded-3xl p-8 overflow-hidden"
+                      ? "relative h-full bg-ink text-ink-foreground rounded-none p-8 shadow-elevated overflow-hidden md:-translate-y-3"
+                      : "relative h-full bg-card border border-border rounded-none p-8 overflow-hidden"
                   }
                 >
                   {t.highlight && <DiamondField density="low" tone="dark" />}
@@ -156,8 +156,8 @@ const Sponsors = () => {
                       <div
                         className={
                           t.highlight
-                            ? "h-12 w-12 rounded-2xl bg-gold text-gold-foreground flex items-center justify-center"
-                            : "h-12 w-12 rounded-2xl gradient-magenta text-primary-foreground flex items-center justify-center"
+                            ? "h-12 w-12 rounded-none bg-gold text-gold-foreground flex items-center justify-center"
+                            : "h-12 w-12 rounded-none bg-primary text-primary-foreground flex items-center justify-center"
                         }
                       >
                         <t.Icon className="h-5 w-5" />
@@ -182,8 +182,8 @@ const Sponsors = () => {
                       asChild
                       className={
                         t.highlight
-                          ? "mt-8 w-full rounded-full bg-gold text-gold-foreground hover:bg-gold/90 border-0"
-                          : "mt-8 w-full rounded-full gradient-magenta text-primary-foreground border-0"
+                          ? "mt-8 w-full rounded-none bg-gold text-gold-foreground hover:bg-gold/90 border-0"
+                          : "mt-8 w-full rounded-none bg-primary text-primary-foreground border-0"
                       }
                     >
                       <a href={CALENDLY_URL} target="_blank" rel="noreferrer">Become a {t.name.split(" ")[0]} sponsor</a>
