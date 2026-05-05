@@ -154,23 +154,21 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ALUMNI MARQUEE */}
-      <section className="bg-muted/40 py-16 md:py-20 border-y border-border/60 overflow-hidden">
-        <div className="mx-auto max-w-7xl px-5 md:px-8 mb-8">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground text-center">
+      {/* ALUMNI GRID */}
+      <section className="bg-muted/40 py-20 md:py-24 border-y border-border/60">
+        <div className="mx-auto max-w-7xl px-5 md:px-8">
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground text-center mb-10">
             WE Alumni currently work at
           </p>
-        </div>
-        <div className="relative">
-          <div className="flex w-max animate-marquee gap-3">
-            {[...companies, ...companies].map((c, i) => (
-              <span
-                key={i}
-                className="inline-flex items-center gap-2 rounded-full bg-background border border-border px-5 py-2.5 text-sm md:text-base font-medium whitespace-nowrap"
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 md:gap-4">
+            {companies.map((c) => (
+              <div
+                key={c}
+                className="group flex items-center justify-center gap-2.5 bg-background border border-border px-4 py-5 md:py-6 text-sm md:text-base font-medium text-center hover:border-primary hover:text-primary transition-colors"
               >
-                <Diamond size={10} variant={i % 2 ? "purple" : "magenta"} />
-                {c}
-              </span>
+                <Diamond size={9} variant="magenta" />
+                <span>{c}</span>
+              </div>
             ))}
           </div>
         </div>
