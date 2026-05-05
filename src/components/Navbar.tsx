@@ -27,6 +27,7 @@ export function Navbar() {
   useEffect(() => setOpen(false), [pathname]);
 
   const transparent = pathname === "/" && !scrolled;
+  const onDark = transparent;
 
   return (
     <header
@@ -34,14 +35,19 @@ export function Navbar() {
         "fixed top-0 inset-x-0 z-50 transition-all duration-300",
         transparent
           ? "bg-transparent"
-          : "bg-background/80 backdrop-blur-xl border-b border-border/60",
+          : "bg-background/90 backdrop-blur-xl border-b border-border/60",
       )}
     >
       <nav className="mx-auto max-w-7xl px-5 md:px-8 h-16 md:h-20 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2.5 group">
-          <Diamond size={20} variant="magenta" />
-          <span className="font-display font-bold text-lg md:text-xl tracking-tight">
-            WE<span className="text-primary">'</span>ve Got Talent
+          <Diamond size={18} variant="magenta" />
+          <span
+            className={cn(
+              "font-display font-bold text-lg md:text-xl tracking-tight",
+              onDark ? "text-ink-foreground" : "text-foreground",
+            )}
+          >
+            WE've Got Talent
           </span>
         </Link>
 
@@ -53,10 +59,14 @@ export function Navbar() {
                 end={l.to === "/"}
                 className={({ isActive }) =>
                   cn(
-                    "px-4 py-2 rounded-full text-sm font-medium transition-colors",
-                    isActive
-                      ? "text-primary"
-                      : "text-foreground/70 hover:text-foreground",
+                    "px-4 py-2 text-sm font-medium transition-colors",
+                    onDark
+                      ? isActive
+                        ? "text-ink-foreground"
+                        : "text-ink-foreground/70 hover:text-ink-foreground"
+                      : isActive
+                        ? "text-foreground"
+                        : "text-foreground/65 hover:text-foreground",
                   )
                 }
               >
@@ -67,13 +77,17 @@ export function Navbar() {
         </ul>
 
         <div className="hidden md:block">
-          <Button asChild size="sm" className="rounded-full px-5 gradient-magenta border-0 text-primary-foreground shadow-card">
+          <Button
+            asChild
+            size="sm"
+            className="rounded-none px-5 bg-primary text-primary-foreground hover:bg-primary/90 border-0"
+          >
             <a href={CALENDLY_URL} target="_blank" rel="noreferrer">Schedule a call</a>
           </Button>
         </div>
 
         <button
-          className="md:hidden p-2 -mr-2"
+          className={cn("md:hidden p-2 -mr-2", onDark ? "text-ink-foreground" : "text-foreground")}
           onClick={() => setOpen((v) => !v)}
           aria-label="Toggle menu"
         >
@@ -91,15 +105,18 @@ export function Navbar() {
                 end={l.to === "/"}
                 className={({ isActive }) =>
                   cn(
-                    "px-4 py-3 rounded-xl text-base font-medium",
-                    isActive ? "bg-primary/10 text-primary" : "text-foreground",
+                    "px-4 py-3 text-base font-medium",
+                    isActive ? "text-primary" : "text-foreground",
                   )
                 }
               >
                 {l.label}
               </NavLink>
             ))}
-            <Button asChild className="mt-2 rounded-full gradient-magenta border-0 text-primary-foreground">
+            <Button
+              asChild
+              className="mt-2 rounded-none bg-primary text-primary-foreground hover:bg-primary/90 border-0"
+            >
               <a href={CALENDLY_URL} target="_blank" rel="noreferrer">Schedule a call</a>
             </Button>
           </div>
