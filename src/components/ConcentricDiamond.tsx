@@ -65,7 +65,8 @@ export function ConcentricDiamond({
     >
       {/* Concentric outline rings */}
       {ringSizes.map((rs, i) => {
-        const opacity = 0.12 + (i / ringSizes.length) * 0.4;
+        // Fainter animated rings
+        const opacity = 0.05 + (i / ringSizes.length) * 0.15;
         const strokeW = i === ringSizes.length - 1 ? 2 : 1.2;
         return (
           <div

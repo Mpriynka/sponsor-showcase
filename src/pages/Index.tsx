@@ -365,7 +365,7 @@ const Index = () => {
               </div>
             </Reveal>
             <Reveal delay={100}>
-              <div className="h-full bg-ink text-ink-foreground rounded-none p-8 md:p-10 relative overflow-hidden">
+              <div className="h-full bg-card border border-border rounded-none p-8 md:p-10 relative overflow-hidden">
                 <div className="absolute -bottom-10 -right-10 opacity-15 pointer-events-none">
                   <ConcentricDiamond size={180} rings={5} variant="gold" animated={false} gem={false} />
                 </div>
@@ -375,9 +375,9 @@ const Index = () => {
                   <div className="mb-6 opacity-70">
                     <ConcentricDiamond size={40} rings={3} variant="gold" animated={false} gem={false} />
                   </div>
-                  <p className="text-xs uppercase tracking-[0.2em] text-ink-foreground/60 mb-2">Community vote</p>
+                  <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2">Community vote</p>
                   <h3 className="font-display font-bold text-3xl">WE Champion</h3>
-                  <p className="mt-4 text-ink-foreground/75 leading-relaxed">
+                  <p className="mt-4 text-muted-foreground leading-relaxed">
                     One overall winner chosen by community vote. <strong className="text-gold">The crowd decides.</strong>
                   </p>
                 </div>
@@ -392,23 +392,24 @@ const Index = () => {
         <div className="mx-auto max-w-7xl px-5 md:px-8">
           <div className="grid md:grid-cols-2 gap-6">
             <Reveal>
-              <Link to="/recruiters" className="group block h-full">
-                <div className="relative h-full overflow-hidden bg-card border border-border rounded-none p-8 md:p-10 hover:border-primary/60 hover:-translate-y-1 transition-all">
-                  <div className="absolute -bottom-10 -right-10 opacity-[0.07] pointer-events-none">
-                    <ConcentricDiamond size={180} rings={5} variant="magenta" animated={false} gem={false} />
+              <Link to="/sponsors" className="group block h-full">
+                <div className="relative h-full overflow-hidden bg-ink text-ink-foreground rounded-none p-8 md:p-10 hover:-translate-y-1 transition-all">
+                  <DiamondField density="low" tone="dark" />
+                  <div className="absolute -bottom-10 -right-10 opacity-15 pointer-events-none">
+                    <ConcentricDiamond size={180} rings={5} variant="gold" animated={false} gem={false} />
                   </div>
                   <div className="relative">
-                    <div className="mb-6 opacity-70">
-                      <ConcentricDiamond size={40} rings={3} variant="magenta" animated={false} gem={false} />
+                    <div className="mb-6 opacity-25">
+                      <ConcentricDiamond size={40} rings={3} variant="gold" animated={false} gem={false} />
                     </div>
-                    <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-2">For recruiters</p>
+                    <p className="text-xs uppercase tracking-[0.25em] text-ink-foreground/60 mb-2">For recruiters</p>
                     <h3 className="font-display font-bold text-3xl md:text-4xl tracking-tight">
                       Hire from a pre-vetted pipeline
                     </h3>
-                    <p className="mt-4 text-muted-foreground leading-relaxed">
+                    <p className="mt-4 text-ink-foreground/75 leading-relaxed">
                       GitHub repos, video demos, and a centralized resume drive — all in one place.
                     </p>
-                    <span className="mt-8 inline-flex items-center gap-2 font-medium text-primary group-hover:gap-3 transition-all">
+                    <span className="mt-8 inline-flex items-center gap-2 font-medium text-gold group-hover:gap-3 transition-all">
                       Explore for recruiters <ArrowRight className="h-4 w-4" />
                     </span>
                   </div>

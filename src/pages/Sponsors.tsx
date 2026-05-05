@@ -43,7 +43,7 @@ const tiers = [
       "Lead training sessions on a topic",
     ],
     variant: "gold" as const,
-    highlight: true,
+    highlight: false,
   },
   {
     Icon: Code2,
