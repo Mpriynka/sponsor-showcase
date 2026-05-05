@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Code2, Youtube, Briefcase, Users, Star, Trophy, Sparkles, Github, Calendar, Send } from "lucide-react";
+import { ArrowRight, Code2, Youtube, Briefcase, Users, Star, Trophy, Sparkles, Calendar, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/Layout";
 import { Seo } from "@/components/Seo";
 import { Diamond, DiamondField } from "@/components/Diamond";
+import { ConcentricDiamond } from "@/components/ConcentricDiamond";
 import { Reveal } from "@/components/Reveal";
 import { CTASection } from "@/components/CTASection";
 import { CALENDLY_URL } from "@/lib/site";
@@ -46,16 +47,22 @@ const Index = () => {
       {/* HERO */}
       <section className="relative overflow-hidden bg-ink text-ink-foreground pt-32 md:pt-40 pb-24 md:pb-32">
         <div className="absolute inset-0 grid-pattern-dark" aria-hidden />
-        <div
-          className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[900px] h-[900px] rounded-full"
-          style={{ background: "var(--gradient-glow)" }}
-          aria-hidden
-        />
-        <DiamondField density="high" tone="dark" />
+
+        {/* Concentric diamond motif — left and right */}
+        <div className="pointer-events-none absolute -left-32 top-1/2 -translate-y-1/2 hidden md:block opacity-70" aria-hidden>
+          <ConcentricDiamond size={520} rings={7} tone="dark" />
+        </div>
+        <div className="pointer-events-none absolute -right-40 top-1/3 hidden md:block opacity-50" aria-hidden>
+          <ConcentricDiamond size={420} rings={6} tone="dark" />
+        </div>
+        {/* Mobile single motif behind hero */}
+        <div className="pointer-events-none absolute inset-0 md:hidden flex items-center justify-center opacity-40" aria-hidden>
+          <ConcentricDiamond size={360} rings={6} tone="dark" />
+        </div>
 
         <div className="relative mx-auto max-w-6xl px-5 md:px-8 text-center">
           <Reveal>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-ink-foreground/20 bg-ink-foreground/5 text-xs font-medium uppercase tracking-[0.22em] text-ink-foreground/75 mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-ink-foreground/20 bg-ink-foreground/5 text-xs font-medium uppercase tracking-[0.22em] text-ink-foreground/75 mb-8">
               <Diamond size={8} variant="magenta" />
               The Women Engineers Community Presents
             </div>
@@ -63,9 +70,9 @@ const Index = () => {
 
           <Reveal delay={80}>
             <h1 className="font-display font-bold text-[3rem] sm:text-7xl md:text-8xl lg:text-[8.5rem] leading-[0.92] tracking-tight">
-              WE<span className="text-gradient-magenta">'</span>ve Got
+              WE've Got
               <br />
-              <span className="text-gradient-magenta">Talent</span>
+              <span className="text-primary">Talent</span>
             </h1>
           </Reveal>
 
@@ -78,7 +85,11 @@ const Index = () => {
 
           <Reveal delay={260}>
             <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
-              <Button asChild size="lg" className="rounded-full px-7 h-12 gradient-magenta border-0 text-primary-foreground shadow-elevated">
+              <Button
+                asChild
+                size="lg"
+                className="rounded-none px-7 h-12 bg-primary text-primary-foreground hover:bg-primary/90 border-0"
+              >
                 <a href={CALENDLY_URL} target="_blank" rel="noreferrer">
                   Partner with us <ArrowRight className="ml-1.5 h-4 w-4" />
                 </a>
@@ -87,7 +98,7 @@ const Index = () => {
                 asChild
                 size="lg"
                 variant="outline"
-                className="rounded-full px-7 h-12 bg-transparent border-ink-foreground/25 text-ink-foreground hover:bg-ink-foreground/10 hover:text-ink-foreground"
+                className="rounded-none px-7 h-12 bg-transparent border border-ink-foreground/40 text-ink-foreground hover:bg-ink-foreground/10 hover:text-ink-foreground"
               >
                 <Link to="/sponsors">Sponsor the event</Link>
               </Button>
@@ -99,7 +110,7 @@ const Index = () => {
               {["0–6 YOE", "Open Source Projects", "YouTube Showcase", "June 2026 · Tentative"].map((c) => (
                 <span
                   key={c}
-                  className="inline-flex items-center gap-2 rounded-full border border-ink-foreground/15 bg-ink-foreground/5 px-4 py-1.5 text-xs md:text-sm text-ink-foreground/80"
+                  className="inline-flex items-center gap-2 border border-ink-foreground/20 bg-ink-foreground/5 px-4 py-1.5 text-xs md:text-sm text-ink-foreground/80"
                 >
                   <Diamond size={8} variant="magenta" />
                   {c}
@@ -118,14 +129,14 @@ const Index = () => {
               Why this is a win-win
             </p>
             <h2 className="font-display font-bold text-4xl md:text-6xl tracking-tight max-w-3xl">
-              A unique opportunity for <span className="text-gradient-magenta">both sides</span>.
+              A unique opportunity for <span className="text-primary">both sides</span>.
             </h2>
           </Reveal>
 
           <div className="mt-14 grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {stats.map((s, i) => (
               <Reveal key={s.label} delay={i * 80}>
-                <div className="group relative h-full bg-card border border-border/80 rounded-3xl p-6 md:p-8 hover:-translate-y-1 hover:shadow-card transition-all duration-300">
+                <div className="group relative h-full bg-card border border-border/80 rounded-none p-6 md:p-8 hover:-translate-y-1 hover:shadow-card transition-all duration-300">
                   <div className="flex items-center justify-between mb-6">
                     <Diamond size={28} variant={s.variant} />
                     <s.Icon className="h-5 w-5 text-muted-foreground" />
@@ -143,23 +154,21 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ALUMNI MARQUEE */}
-      <section className="bg-muted/40 py-16 md:py-20 border-y border-border/60 overflow-hidden">
-        <div className="mx-auto max-w-7xl px-5 md:px-8 mb-8">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground text-center">
+      {/* ALUMNI GRID */}
+      <section className="bg-muted/40 py-20 md:py-24 border-y border-border/60">
+        <div className="mx-auto max-w-7xl px-5 md:px-8">
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground text-center mb-10">
             WE Alumni currently work at
           </p>
-        </div>
-        <div className="relative">
-          <div className="flex w-max animate-marquee gap-3">
-            {[...companies, ...companies].map((c, i) => (
-              <span
-                key={i}
-                className="inline-flex items-center gap-2 rounded-full bg-background border border-border px-5 py-2.5 text-sm md:text-base font-medium whitespace-nowrap"
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 md:gap-4">
+            {companies.map((c) => (
+              <div
+                key={c}
+                className="group flex items-center justify-center gap-2.5 bg-background border border-border px-4 py-5 md:py-6 text-sm md:text-base font-medium text-center hover:border-primary hover:text-primary transition-colors"
               >
-                <Diamond size={10} variant={i % 2 ? "purple" : "magenta"} />
-                {c}
-              </span>
+                <Diamond size={9} variant="magenta" />
+                <span>{c}</span>
+              </div>
             ))}
           </div>
         </div>
@@ -179,7 +188,7 @@ const Index = () => {
 
           <div className="mt-14 grid md:grid-cols-2 gap-6">
             <Reveal>
-              <article className="relative h-full overflow-hidden bg-card border border-border rounded-3xl p-8 md:p-10">
+              <article className="relative h-full overflow-hidden bg-card border border-border rounded-none p-8 md:p-10">
                 <Diamond size={40} variant="magenta" className="mb-8" />
                 <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-2">
                   WE Program
@@ -197,7 +206,7 @@ const Index = () => {
             </Reveal>
 
             <Reveal delay={100}>
-              <article className="relative h-full overflow-hidden bg-ink text-ink-foreground rounded-3xl p-8 md:p-10">
+              <article className="relative h-full overflow-hidden bg-ink text-ink-foreground rounded-none p-8 md:p-10">
                 <DiamondField density="low" tone="dark" />
                 <div className="relative">
                   <Diamond size={40} variant="gold" className="mb-8" />
@@ -229,15 +238,15 @@ const Index = () => {
               The event
             </p>
             <h2 className="font-display font-bold text-4xl md:text-6xl tracking-tight max-w-3xl">
-              Three days. <span className="text-gradient-magenta">Three pillars.</span>
+              Three days. <span className="text-primary">Three pillars.</span>
             </h2>
           </Reveal>
 
           <div className="mt-14 grid md:grid-cols-3 gap-5">
             {eventPillars.map((p, i) => (
               <Reveal key={p.title} delay={i * 80}>
-                <div className="h-full bg-card border border-border rounded-3xl p-8 hover:-translate-y-1 transition-transform duration-300">
-                  <div className="h-14 w-14 rounded-2xl gradient-magenta flex items-center justify-center text-primary-foreground mb-6">
+                <div className="h-full bg-card border border-border rounded-none p-8 hover:-translate-y-1 transition-transform duration-300">
+                  <div className="h-14 w-14 rounded-none bg-primary flex items-center justify-center text-primary-foreground mb-6">
                     <p.Icon className="h-6 w-6" />
                   </div>
                   <p className="font-display font-bold text-2xl md:text-3xl tracking-tight">
@@ -250,7 +259,7 @@ const Index = () => {
           </div>
 
           <Reveal>
-            <div className="mt-10 grid sm:grid-cols-3 gap-4 bg-card border border-border rounded-3xl p-6 md:p-8">
+            <div className="mt-10 grid sm:grid-cols-3 gap-4 bg-card border border-border rounded-none p-6 md:p-8">
               {[
                 { Icon: Users, label: "Participation", value: "Teams of 1–3 (self-formed or matched)" },
                 { Icon: Send, label: "Submissions", value: "Repo + video demo + resume drive" },
@@ -285,7 +294,7 @@ const Index = () => {
             {steps.map((s, i) => (
               <Reveal key={s.n} delay={i * 70}>
                 <div className="relative h-full">
-                  <div className="bg-card border border-border rounded-3xl p-6 h-full hover:border-primary/50 transition-colors">
+                  <div className="bg-card border border-border rounded-none p-6 h-full hover:border-primary/50 transition-colors">
                     <div className="flex items-center gap-3 mb-4">
                       <Diamond size={18} variant={i % 2 ? "purple" : "magenta"} />
                       <span className="font-display font-bold text-sm text-muted-foreground">{s.n}</span>
@@ -308,13 +317,13 @@ const Index = () => {
               Awards
             </p>
             <h2 className="font-display font-bold text-4xl md:text-6xl tracking-tight max-w-3xl">
-              Every winner earns <span className="text-gradient-magenta">a real shot.</span>
+              Every winner earns <span className="text-primary">a real shot.</span>
             </h2>
           </Reveal>
 
           <div className="mt-14 grid md:grid-cols-2 gap-6">
             <Reveal>
-              <div className="h-full bg-card border border-border rounded-3xl p-8 md:p-10 relative overflow-hidden">
+              <div className="h-full bg-card border border-border rounded-none p-8 md:p-10 relative overflow-hidden">
                 <Trophy className="absolute -top-6 -right-6 h-40 w-40 text-primary/10" />
                 <Diamond size={32} variant="magenta" className="mb-6" />
                 <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2">Per company</p>
@@ -325,7 +334,7 @@ const Index = () => {
               </div>
             </Reveal>
             <Reveal delay={100}>
-              <div className="h-full bg-ink text-ink-foreground rounded-3xl p-8 md:p-10 relative overflow-hidden">
+              <div className="h-full bg-ink text-ink-foreground rounded-none p-8 md:p-10 relative overflow-hidden">
                 <Sparkles className="absolute -top-4 -right-4 h-32 w-32 text-gold/30" />
                 <Diamond size={32} variant="gold" className="mb-6" />
                 <p className="text-xs uppercase tracking-[0.2em] text-ink-foreground/60 mb-2">Community vote</p>
@@ -345,7 +354,7 @@ const Index = () => {
           <div className="grid md:grid-cols-2 gap-6">
             <Reveal>
               <Link to="/recruiters" className="group block h-full">
-                <div className="relative h-full overflow-hidden bg-card border border-border rounded-3xl p-8 md:p-10 hover:border-primary/60 hover:-translate-y-1 transition-all">
+                <div className="relative h-full overflow-hidden bg-card border border-border rounded-none p-8 md:p-10 hover:border-primary/60 hover:-translate-y-1 transition-all">
                   <Diamond size={32} variant="magenta" className="mb-6" />
                   <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-2">For recruiters</p>
                   <h3 className="font-display font-bold text-3xl md:text-4xl tracking-tight">
@@ -362,7 +371,7 @@ const Index = () => {
             </Reveal>
             <Reveal delay={100}>
               <Link to="/sponsors" className="group block h-full">
-                <div className="relative h-full overflow-hidden bg-ink text-ink-foreground rounded-3xl p-8 md:p-10 hover:-translate-y-1 transition-all">
+                <div className="relative h-full overflow-hidden bg-ink text-ink-foreground rounded-none p-8 md:p-10 hover:-translate-y-1 transition-all">
                   <DiamondField density="low" tone="dark" />
                   <div className="relative">
                     <Diamond size={32} variant="gold" className="mb-6" />
