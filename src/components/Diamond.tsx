@@ -34,7 +34,7 @@ export function Diamond({ size = 32, className, variant = "magenta", filled = tr
         background: filled ? fill : "transparent",
         border: filled ? "none" : `2px solid ${stroke}`,
         transform: "rotate(45deg)",
-        borderRadius: 4,
+        borderRadius: 0,
       }}
     />
   );
