@@ -47,16 +47,22 @@ const Index = () => {
       {/* HERO */}
       <section className="relative overflow-hidden bg-ink text-ink-foreground pt-32 md:pt-40 pb-24 md:pb-32">
         <div className="absolute inset-0 grid-pattern-dark" aria-hidden />
-        <div
-          className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[900px] h-[900px] rounded-full"
-          style={{ background: "var(--gradient-glow)" }}
-          aria-hidden
-        />
-        <DiamondField density="high" tone="dark" />
+
+        {/* Concentric diamond motif — left and right */}
+        <div className="pointer-events-none absolute -left-32 top-1/2 -translate-y-1/2 hidden md:block opacity-70" aria-hidden>
+          <ConcentricDiamond size={520} rings={7} tone="dark" />
+        </div>
+        <div className="pointer-events-none absolute -right-40 top-1/3 hidden md:block opacity-50" aria-hidden>
+          <ConcentricDiamond size={420} rings={6} tone="dark" />
+        </div>
+        {/* Mobile single motif behind hero */}
+        <div className="pointer-events-none absolute inset-0 md:hidden flex items-center justify-center opacity-40" aria-hidden>
+          <ConcentricDiamond size={360} rings={6} tone="dark" />
+        </div>
 
         <div className="relative mx-auto max-w-6xl px-5 md:px-8 text-center">
           <Reveal>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-ink-foreground/20 bg-ink-foreground/5 text-xs font-medium uppercase tracking-[0.22em] text-ink-foreground/75 mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-ink-foreground/20 bg-ink-foreground/5 text-xs font-medium uppercase tracking-[0.22em] text-ink-foreground/75 mb-8">
               <Diamond size={8} variant="magenta" />
               The Women Engineers Community Presents
             </div>
@@ -64,9 +70,9 @@ const Index = () => {
 
           <Reveal delay={80}>
             <h1 className="font-display font-bold text-[3rem] sm:text-7xl md:text-8xl lg:text-[8.5rem] leading-[0.92] tracking-tight">
-              WE<span className="text-gradient-magenta">'</span>ve Got
+              WE've Got
               <br />
-              <span className="text-gradient-magenta">Talent</span>
+              <span className="text-primary">Talent</span>
             </h1>
           </Reveal>
 
@@ -79,7 +85,11 @@ const Index = () => {
 
           <Reveal delay={260}>
             <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
-              <Button asChild size="lg" className="rounded-full px-7 h-12 gradient-magenta border-0 text-primary-foreground shadow-elevated">
+              <Button
+                asChild
+                size="lg"
+                className="rounded-none px-7 h-12 bg-primary text-primary-foreground hover:bg-primary/90 border-0"
+              >
                 <a href={CALENDLY_URL} target="_blank" rel="noreferrer">
                   Partner with us <ArrowRight className="ml-1.5 h-4 w-4" />
                 </a>
@@ -88,7 +98,7 @@ const Index = () => {
                 asChild
                 size="lg"
                 variant="outline"
-                className="rounded-full px-7 h-12 bg-transparent border-ink-foreground/25 text-ink-foreground hover:bg-ink-foreground/10 hover:text-ink-foreground"
+                className="rounded-none px-7 h-12 bg-transparent border border-ink-foreground/40 text-ink-foreground hover:bg-ink-foreground/10 hover:text-ink-foreground"
               >
                 <Link to="/sponsors">Sponsor the event</Link>
               </Button>
@@ -100,7 +110,7 @@ const Index = () => {
               {["0–6 YOE", "Open Source Projects", "YouTube Showcase", "June 2026 · Tentative"].map((c) => (
                 <span
                   key={c}
-                  className="inline-flex items-center gap-2 rounded-full border border-ink-foreground/15 bg-ink-foreground/5 px-4 py-1.5 text-xs md:text-sm text-ink-foreground/80"
+                  className="inline-flex items-center gap-2 border border-ink-foreground/20 bg-ink-foreground/5 px-4 py-1.5 text-xs md:text-sm text-ink-foreground/80"
                 >
                   <Diamond size={8} variant="magenta" />
                   {c}
