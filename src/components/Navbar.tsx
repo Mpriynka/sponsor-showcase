@@ -3,13 +3,13 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Diamond } from "@/components/Diamond";
-import { CALENDLY_URL } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 const links = [
   { to: "/", label: "Home" },
   { to: "/recruiters", label: "Recruiters" },
   { to: "/sponsors", label: "Sponsors" },
+  { to: "/contact", label: "Contact" },
 ];
 
 export function Navbar() {
@@ -82,7 +82,7 @@ export function Navbar() {
             size="sm"
             className="rounded-none px-5 bg-primary text-primary-foreground hover:bg-primary/90 border-0"
           >
-            <a href={CALENDLY_URL} target="_blank" rel="noreferrer">Schedule a call</a>
+            <Link to="/contact">Reach out</Link>
           </Button>
         </div>
 
@@ -117,7 +117,7 @@ export function Navbar() {
               asChild
               className="mt-2 rounded-none bg-primary text-primary-foreground hover:bg-primary/90 border-0"
             >
-              <a href={CALENDLY_URL} target="_blank" rel="noreferrer">Schedule a call</a>
+              <Link to="/contact">Reach out</Link>
             </Button>
           </div>
         </div>

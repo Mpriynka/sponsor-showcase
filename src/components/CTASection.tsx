@@ -1,13 +1,14 @@
-import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import { Diamond, DiamondField } from "@/components/Diamond";
-import { CALENDLY_URL } from "@/lib/site";
-import { ArrowRight } from "lucide-react";
+import { ConcentricDiamond } from "@/components/ConcentricDiamond";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Mail } from "lucide-react";
 
 export function CTASection({
   eyebrow = "Let's make it happen",
   title = "Build the next class of world-class women engineers.",
-  primaryLabel = "Partner with us",
-  secondaryLabel = "Sponsor us",
+  primaryLabel = "Contact us",
+  secondaryLabel = "For sponsors",
 }: {
   eyebrow?: string;
   title?: string;
@@ -15,16 +16,20 @@ export function CTASection({
   secondaryLabel?: string;
 }) {
   return (
-    <section className="relative overflow-hidden grid-pattern-charcoal text-ink-foreground">
+    <section className="relative overflow-hidden bg-ink text-ink-foreground">
+      <div className="absolute inset-0 grid-pattern-dark opacity-60" aria-hidden />
       <DiamondField density="medium" tone="dark" />
-      <div className="absolute inset-0 grid-pattern-ink opacity-40" aria-hidden />
-      <div
-        className="absolute -top-40 left-1/2 -translate-x-1/2 w-[640px] h-[640px] rounded-none"
-        style={{ background: "var(--gradient-glow)" }}
-        aria-hidden
-      />
+
+      {/* Large concentric diamond — background decor, NO pink blob */}
+      <div className="pointer-events-none absolute -left-40 top-1/2 -translate-y-1/2 opacity-20 hidden md:block" aria-hidden>
+        <ConcentricDiamond size={480} rings={7} variant="magenta" animated gem={false} />
+      </div>
+      <div className="pointer-events-none absolute -right-32 -bottom-20 opacity-15 hidden md:block" aria-hidden>
+        <ConcentricDiamond size={320} rings={5} variant="purple" animated={false} gem={false} />
+      </div>
+
       <div className="relative mx-auto max-w-5xl px-5 md:px-8 py-20 md:py-28 text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-none border border-ink-foreground/15 bg-ink-foreground/5 text-xs font-medium uppercase tracking-[0.2em] text-ink-foreground/70 mb-6">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-ink-foreground/15 bg-ink-foreground/5 text-xs font-medium uppercase tracking-[0.2em] text-ink-foreground/70 mb-6">
           <Diamond size={8} variant="magenta" />
           {eyebrow}
         </div>
@@ -33,9 +38,10 @@ export function CTASection({
         </h2>
         <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
           <Button asChild size="lg" className="rounded-none px-7 h-12 bg-primary border-0 text-primary-foreground shadow-elevated">
-            <a href={CALENDLY_URL} target="_blank" rel="noreferrer">
+            <Link to="/contact">
+              <Mail className="mr-2 h-4 w-4" />
               {primaryLabel} <ArrowRight className="ml-1.5 h-4 w-4" />
-            </a>
+            </Link>
           </Button>
           <Button
             asChild
@@ -43,7 +49,7 @@ export function CTASection({
             variant="outline"
             className="rounded-none px-7 h-12 bg-transparent border-ink-foreground/25 text-ink-foreground hover:bg-ink-foreground/10 hover:text-ink-foreground"
           >
-            <a href={CALENDLY_URL} target="_blank" rel="noreferrer">{secondaryLabel}</a>
+            <Link to="/sponsors">{secondaryLabel}</Link>
           </Button>
         </div>
       </div>

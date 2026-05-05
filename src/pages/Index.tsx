@@ -8,7 +8,7 @@ import { ConcentricDiamond } from "@/components/ConcentricDiamond";
 import { Reveal } from "@/components/Reveal";
 import { CTASection } from "@/components/CTASection";
 import { Timeline } from "@/components/Timeline";
-import { CALENDLY_URL } from "@/lib/site";
+
 
 const stats = [
   { value: "100+", label: "Participating Members", variant: "magenta" as const, Icon: Users },
@@ -51,14 +51,14 @@ const Index = () => {
 
         {/* Concentric diamond motif — left and right */}
         <div className="pointer-events-none absolute -left-32 top-1/2 -translate-y-1/2 hidden md:block opacity-70" aria-hidden>
-          <ConcentricDiamond size={520} rings={7} tone="dark" />
+          <ConcentricDiamond size={520} rings={7} variant="magenta" animated gem={false} />
         </div>
         <div className="pointer-events-none absolute -right-40 top-1/3 hidden md:block opacity-50" aria-hidden>
-          <ConcentricDiamond size={420} rings={6} tone="dark" />
+          <ConcentricDiamond size={420} rings={6} variant="magenta" animated={false} gem={false} />
         </div>
         {/* Mobile single motif behind hero */}
         <div className="pointer-events-none absolute inset-0 md:hidden flex items-center justify-center opacity-40" aria-hidden>
-          <ConcentricDiamond size={360} rings={6} tone="dark" />
+          <ConcentricDiamond size={360} rings={6} variant="magenta" animated gem={false} />
         </div>
 
         <div className="relative mx-auto max-w-6xl px-5 md:px-8 text-center">
@@ -91,9 +91,9 @@ const Index = () => {
                 size="lg"
                 className="rounded-none px-7 h-12 bg-primary text-primary-foreground hover:bg-primary/90 border-0"
               >
-                <a href={CALENDLY_URL} target="_blank" rel="noreferrer">
-                  Partner with us <ArrowRight className="ml-1.5 h-4 w-4" />
-                </a>
+                <Link to="/contact">
+                  Reach out <ArrowRight className="ml-1.5 h-4 w-4" />
+                </Link>
               </Button>
               <Button
                 asChild
@@ -142,13 +142,16 @@ const Index = () => {
             {stats.map((s, i) => (
               <Reveal key={s.label} delay={i * 80}>
                 <div className="group relative h-full bg-card border border-border/80 rounded-none p-6 md:p-8 hover:-translate-y-1 hover:shadow-card transition-all duration-300 overflow-hidden">
-                  {/* Small concentric gem behind the number */}
-                  <div className="absolute -bottom-6 -right-6 opacity-10">
-                    <ConcentricDiamond size={100} rings={4} variant={s.variant === "gold" ? "gold" : s.variant === "purple" ? "purple" : "magenta"} animated={false} gem />
+                  {/* Faint concentric diamond background decor */}
+                  <div className="absolute -bottom-6 -right-6 opacity-[0.08] pointer-events-none">
+                    <ConcentricDiamond size={110} rings={4} variant={s.variant === "gold" ? "gold" : s.variant === "purple" ? "purple" : "magenta"} animated={false} gem={false} />
                   </div>
                   <div className="relative">
                     <div className="flex items-center justify-between mb-4">
-                      <Diamond size={20} variant={s.variant} />
+                      {/* Small faint concentric replacing solid diamond */}
+                      <div className="opacity-70">
+                        <ConcentricDiamond size={28} rings={3} variant={s.variant === "gold" ? "gold" : s.variant === "purple" ? "purple" : "magenta"} animated={false} gem={false} />
+                      </div>
                       <s.Icon className="h-4 w-4 text-muted-foreground" />
                     </div>
                     <div className="font-display font-bold text-4xl md:text-5xl tracking-tight">
@@ -166,18 +169,17 @@ const Index = () => {
       </section>
 
       {/* ALUMNI GRID */}
-      <section className="py-20 md:py-24 grid-pattern-blush border-y border-primary/15">
+      <section className="py-14 md:py-18 grid-pattern-blush border-y border-primary/15">
         <div className="mx-auto max-w-7xl px-5 md:px-8">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground text-center mb-10">
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground text-center mb-8">
             WE Alumni currently work at
           </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 md:gap-4">
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2 md:gap-3">
             {companies.map((c) => (
               <div
                 key={c}
-                className="group flex items-center justify-center gap-2.5 bg-background border border-border px-4 py-5 md:py-6 text-sm md:text-base font-medium text-center hover:border-primary hover:text-primary transition-colors"
+                className="group flex items-center justify-center bg-background border border-border px-3 py-3 md:py-4 text-sm md:text-base font-semibold text-center hover:border-primary hover:text-primary transition-colors"
               >
-                <Diamond size={9} variant="magenta" />
                 <span>{c}</span>
               </div>
             ))}
@@ -345,12 +347,15 @@ const Index = () => {
           <div className="mt-14 grid md:grid-cols-2 gap-6">
             <Reveal>
               <div className="h-full bg-card border border-border rounded-none p-8 md:p-10 relative overflow-hidden">
-                <div className="absolute -bottom-10 -right-10 opacity-10">
-                  <ConcentricDiamond size={160} rings={5} variant="magenta" animated={false} gem />
+                <div className="absolute -bottom-10 -right-10 opacity-[0.08] pointer-events-none">
+                  <ConcentricDiamond size={180} rings={5} variant="magenta" animated={false} gem={false} />
                 </div>
                 <div className="relative">
                   <Trophy className="absolute top-0 right-0 h-24 w-24 text-primary/10" />
-                  <Diamond size={32} variant="magenta" className="mb-6" />
+                  {/* Faint small concentric replacing solid Diamond */}
+                  <div className="mb-6 opacity-70">
+                    <ConcentricDiamond size={40} rings={3} variant="magenta" animated={false} gem={false} />
+                  </div>
                   <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2">Per company</p>
                   <h3 className="font-display font-bold text-3xl">Partner Choice</h3>
                   <p className="mt-4 text-muted-foreground leading-relaxed">
@@ -361,12 +366,15 @@ const Index = () => {
             </Reveal>
             <Reveal delay={100}>
               <div className="h-full bg-ink text-ink-foreground rounded-none p-8 md:p-10 relative overflow-hidden">
-                <div className="absolute -bottom-10 -right-10 opacity-20">
-                  <ConcentricDiamond size={160} rings={5} variant="gold" animated={false} gem />
+                <div className="absolute -bottom-10 -right-10 opacity-15 pointer-events-none">
+                  <ConcentricDiamond size={180} rings={5} variant="gold" animated={false} gem={false} />
                 </div>
                 <div className="relative">
                   <Sparkles className="absolute top-0 right-0 h-20 w-20 text-gold/30" />
-                  <Diamond size={32} variant="gold" className="mb-6" />
+                  {/* Faint small concentric replacing solid Diamond */}
+                  <div className="mb-6 opacity-70">
+                    <ConcentricDiamond size={40} rings={3} variant="gold" animated={false} gem={false} />
+                  </div>
                   <p className="text-xs uppercase tracking-[0.2em] text-ink-foreground/60 mb-2">Community vote</p>
                   <h3 className="font-display font-bold text-3xl">WE Champion</h3>
                   <p className="mt-4 text-ink-foreground/75 leading-relaxed">
@@ -386,17 +394,24 @@ const Index = () => {
             <Reveal>
               <Link to="/recruiters" className="group block h-full">
                 <div className="relative h-full overflow-hidden bg-card border border-border rounded-none p-8 md:p-10 hover:border-primary/60 hover:-translate-y-1 transition-all">
-                  <Diamond size={32} variant="magenta" className="mb-6" />
-                  <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-2">For recruiters</p>
-                  <h3 className="font-display font-bold text-3xl md:text-4xl tracking-tight">
-                    Hire from a pre-vetted pipeline
-                  </h3>
-                  <p className="mt-4 text-muted-foreground leading-relaxed">
-                    GitHub repos, video demos, and a centralized resume drive — all in one place.
-                  </p>
-                  <span className="mt-8 inline-flex items-center gap-2 font-medium text-primary group-hover:gap-3 transition-all">
-                    Explore for recruiters <ArrowRight className="h-4 w-4" />
-                  </span>
+                  <div className="absolute -bottom-10 -right-10 opacity-[0.07] pointer-events-none">
+                    <ConcentricDiamond size={180} rings={5} variant="magenta" animated={false} gem={false} />
+                  </div>
+                  <div className="relative">
+                    <div className="mb-6 opacity-70">
+                      <ConcentricDiamond size={40} rings={3} variant="magenta" animated={false} gem={false} />
+                    </div>
+                    <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-2">For recruiters</p>
+                    <h3 className="font-display font-bold text-3xl md:text-4xl tracking-tight">
+                      Hire from a pre-vetted pipeline
+                    </h3>
+                    <p className="mt-4 text-muted-foreground leading-relaxed">
+                      GitHub repos, video demos, and a centralized resume drive — all in one place.
+                    </p>
+                    <span className="mt-8 inline-flex items-center gap-2 font-medium text-primary group-hover:gap-3 transition-all">
+                      Explore for recruiters <ArrowRight className="h-4 w-4" />
+                    </span>
+                  </div>
                 </div>
               </Link>
             </Reveal>
@@ -404,8 +419,13 @@ const Index = () => {
               <Link to="/sponsors" className="group block h-full">
                 <div className="relative h-full overflow-hidden bg-ink text-ink-foreground rounded-none p-8 md:p-10 hover:-translate-y-1 transition-all">
                   <DiamondField density="low" tone="dark" />
+                  <div className="absolute -bottom-10 -right-10 opacity-15 pointer-events-none">
+                    <ConcentricDiamond size={180} rings={5} variant="gold" animated={false} gem={false} />
+                  </div>
                   <div className="relative">
-                    <Diamond size={32} variant="gold" className="mb-6" />
+                    <div className="mb-6 opacity-70">
+                      <ConcentricDiamond size={40} rings={3} variant="gold" animated={false} gem={false} />
+                    </div>
                     <p className="text-xs uppercase tracking-[0.25em] text-ink-foreground/60 mb-2">For sponsors</p>
                     <h3 className="font-display font-bold text-3xl md:text-4xl tracking-tight">
                       Sponsor the future of women in tech
