@@ -1,0 +1,267 @@
+.timelineSection {
+  position: relative;
+  width: 100%;
+  padding: 6rem 0;
+  background-color: hsl(30 33% 97%); /* warm cream, matches --background */
+  background-image:
+    linear-gradient(hsl(var(--foreground) / 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--foreground) / 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+  border-top: 1px solid hsl(var(--border) / 0.5);
+  border-bottom: 1px solid hsl(var(--border) / 0.5);
+  overflow: hidden;
+}
+
+.faintCodeBg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  pointer-events: none;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  color: hsl(var(--foreground));
+  white-space: pre-wrap;
+  word-break: break-all;
+  overflow: hidden;
+  z-index: 0;
+  mask-image: radial-gradient(ellipse at center, black 20%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 80%);
+}
+
+.container {
+  width: 100%;
+  position: relative;
+  z-index: 10;
+}
+
+.scrollArea {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  padding: 0 calc(50vw - 160px) 4rem; /* Padding to center first/last items */
+  position: relative;
+  gap: 2rem;
+  align-items: flex-start;
+  min-height: 400px;
+}
+
+@media (min-width: 768px) {
+  .scrollArea {
+    padding: 0 calc(50vw - 200px) 5rem;
+    gap: 3rem;
+  }
+}
+
+.scrollArea::-webkit-scrollbar {
+  display: none;
+}
+
+.track {
+  position: absolute;
+  top: 5.5rem;
+  left: 0;
+  width: 10000px; /* Arbitrary large width to ensure line covers scrolling area */
+  height: 0;
+  border-top: 2px solid hsl(var(--ink));
+  background-color: transparent;
+  z-index: 0;
+}
+
+@media (min-width: 768px) {
+  .track {
+    top: 6rem;
+  }
+}
+
+.step {
+  scroll-snap-align: center;
+  flex: 0 0 auto;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  transition: all 0.35s ease-out;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .step {
+    width: 400px;
+  }
+}
+
+.indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 5.5rem;
+  justify-content: flex-start;
+  transition: transform 0.35s ease-out, opacity 0.35s ease-out;
+  opacity: 0.4;
+}
+
+@media (min-width: 768px) {
+  .indicator {
+    height: 6rem;
+  }
+}
+
+.step.active .indicator {
+  opacity: 1;
+  transform: translateY(-8px);
+}
+
+.stepNumber {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: hsl(var(--ink) / 0.5);
+  margin-bottom: 0.75rem;
+  transition: color 0.4s ease;
+}
+
+.step.active .stepNumber {
+  color: hsl(var(--ink));
+}
+
+.diamondIcon {
+  width: 12px;
+  height: 12px;
+  background-color: hsl(var(--background));
+  border: 1.5px solid hsl(var(--ink));
+  border-radius: 50%; /* Make it a circle like in the image (or keep diamond) */
+  /* Actually image has a faint circle indicator above the line */
+  transition: all 0.35s ease-out;
+  position: relative;
+}
+
+.step.active .diamondIcon {
+  background-color: hsl(var(--ink));
+  border-color: hsl(var(--ink));
+  transform: scale(1.2);
+  box-shadow: 0 0 16px 2px hsl(var(--ink) / 0.2);
+}
+
+.node {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: hsl(var(--ink));
+  position: absolute;
+  top: 5.5rem;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.35s ease-out;
+  z-index: 2;
+}
+
+@media (min-width: 768px) {
+  .node {
+    top: 6rem;
+  }
+}
+
+.step.active .node {
+  background-color: hsl(var(--background));
+  border: 4px solid hsl(var(--ink));
+  width: 24px;
+  height: 24px;
+  box-shadow: 0 0 0 4px hsl(var(--background));
+}
+
+.card {
+  margin-top: 1.5rem;
+  width: 100%;
+  background-color: hsl(var(--card) / 0.4);
+  border: 1px solid hsl(var(--ink));
+  border-radius: 1.5rem;
+  padding: 0;
+  opacity: 0.5;
+  transform: scale(0.9) translateY(10px);
+  transition: all 0.35s ease-out;
+  box-shadow: none;
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .card {
+    margin-top: 2rem;
+  }
+}
+
+.cardHeader {
+  padding: 1.5rem 1rem 1rem;
+  text-align: center;
+  transition: all 0.35s ease-out;
+}
+
+.cardBody {
+  background-color: hsl(var(--background) / 0.6);
+  border-radius: 1rem;
+  margin: 0 0.5rem 0.5rem;
+  padding: 1.5rem;
+  transition: all 0.35s ease-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100px;
+}
+
+.step.active .card {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  border-color: hsl(var(--ink));
+  border-width: 2px;
+  box-shadow: 0 24px 48px -12px hsl(var(--primary) / 0.25);
+  background-color: hsl(var(--primary));
+}
+
+.step.active .cardBody {
+  background-color: hsl(var(--background));
+  border-radius: 1.25rem;
+}
+
+.cardTitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: hsl(var(--foreground) / 0.8);
+  transition: color 0.35s ease-out;
+}
+
+@media (min-width: 768px) {
+  .cardTitle {
+    font-size: 1.75rem;
+  }
+}
+
+.step.active .cardTitle {
+  color: hsl(var(--primary-foreground));
+}
+
+.cardDesc {
+  font-size: 0.95rem;
+  color: hsl(var(--muted-foreground));
+  line-height: 1.6;
+  text-align: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-top: 1px dashed hsl(var(--border));
+  border-bottom: 1px dashed hsl(var(--border));
+}
+
+@media (min-width: 768px) {
+  .cardDesc {
+    font-size: 1.05rem;
+  }
+}

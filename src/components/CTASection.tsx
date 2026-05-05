@@ -15,9 +15,9 @@ export function CTASection({
   secondaryLabel?: string;
 }) {
   return (
-    <section className="relative overflow-hidden bg-ink text-ink-foreground">
+    <section className="relative overflow-hidden grid-pattern-charcoal text-ink-foreground">
       <DiamondField density="medium" tone="dark" />
-      <div className="absolute inset-0 grid-pattern-dark opacity-60" aria-hidden />
+      <div className="absolute inset-0 grid-pattern-ink opacity-40" aria-hidden />
       <div
         className="absolute -top-40 left-1/2 -translate-x-1/2 w-[640px] h-[640px] rounded-none"
         style={{ background: "var(--gradient-glow)" }}

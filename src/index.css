@@ -152,13 +152,97 @@
     background-image:
       linear-gradient(hsl(0 0% 100% / 0.05) 1px, transparent 1px),
       linear-gradient(90deg, hsl(0 0% 100% / 0.05) 1px, transparent 1px);
-    background-size: 56px 56px;
+    background-size: 48px 48px;
   }
   .shadow-card {
     box-shadow: var(--shadow-card);
   }
   .shadow-elevated {
     box-shadow: var(--shadow-elevated);
+  }
+  .grid-pattern-purple {
+    background-color: hsl(268 60% 85%);
+    background-image:
+      linear-gradient(hsl(268 60% 55% / 0.2) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(268 60% 55% / 0.2) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  /* Soft blush pink — slide 1 hero style */
+  .grid-pattern-blush {
+    background-color: hsl(333 80% 95%);
+    background-image:
+      linear-gradient(hsl(333 82% 54% / 0.12) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(333 82% 54% / 0.12) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  /* Deep navy/ink grid — slide 2 stats style */
+  .grid-pattern-ink {
+    background-image:
+      linear-gradient(hsl(0 0% 100% / 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(0 0% 100% / 0.06) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  /* Neutral light grey tile — slide 3 WE Program style */
+  .grid-pattern-tile {
+    background-color: hsl(30 20% 96%);
+    background-image:
+      linear-gradient(hsl(var(--foreground) / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--foreground) / 0.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  /* Hot pink — slide 4 event style */
+  .grid-pattern-hot-pink {
+    background-color: hsl(333 90% 88%);
+    background-image:
+      linear-gradient(hsl(333 82% 54% / 0.18) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(333 82% 54% / 0.18) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  /* Full magenta — slide 6 recruiters hero */
+  .grid-pattern-magenta {
+    background-color: hsl(333 90% 50%);
+    background-image:
+      linear-gradient(hsl(0 0% 0% / 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(0 0% 0% / 0.08) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  /* Dark charcoal — slide 13 CTA style */
+  .grid-pattern-charcoal {
+    background-color: hsl(240 15% 18%);
+    background-image:
+      linear-gradient(hsl(0 0% 100% / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(0 0% 100% / 0.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  /* Fade grid out at top + bottom to blend with adjacent sections */
+  .section-fade {
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      black 12%,
+      black 88%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      black 12%,
+      black 88%,
+      transparent 100%
+    );
+  }
+  /* Fade only from the bottom (for hero sections) */
+  .section-fade-bottom {
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      black 60%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      black 60%,
+      transparent 100%
+    );
   }
 }
 

@@ -7,6 +7,7 @@ import { Diamond, DiamondField } from "@/components/Diamond";
 import { ConcentricDiamond } from "@/components/ConcentricDiamond";
 import { Reveal } from "@/components/Reveal";
 import { CTASection } from "@/components/CTASection";
+import { Timeline } from "@/components/Timeline";
 import { CALENDLY_URL } from "@/lib/site";
 
 const stats = [
@@ -122,8 +123,12 @@ const Index = () => {
       </section>
 
       {/* WHY WIN-WIN — STATS */}
-      <section className="relative py-24 md:py-32">
-        <div className="mx-auto max-w-7xl px-5 md:px-8">
+      <section className="relative py-24 md:py-32 grid-pattern overflow-hidden">
+        {/* Large background concentric diamond */}
+        <div className="pointer-events-none absolute -right-40 top-1/2 -translate-y-1/2 opacity-20 hidden md:block" aria-hidden>
+          <ConcentricDiamond size={560} rings={8} variant="magenta" animated gem={false} />
+        </div>
+        <div className="mx-auto max-w-7xl px-5 md:px-8 relative">
           <Reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary mb-4">
               Why this is a win-win
@@ -136,17 +141,23 @@ const Index = () => {
           <div className="mt-14 grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {stats.map((s, i) => (
               <Reveal key={s.label} delay={i * 80}>
-                <div className="group relative h-full bg-card border border-border/80 rounded-none p-6 md:p-8 hover:-translate-y-1 hover:shadow-card transition-all duration-300">
-                  <div className="flex items-center justify-between mb-6">
-                    <Diamond size={28} variant={s.variant} />
-                    <s.Icon className="h-5 w-5 text-muted-foreground" />
+                <div className="group relative h-full bg-card border border-border/80 rounded-none p-6 md:p-8 hover:-translate-y-1 hover:shadow-card transition-all duration-300 overflow-hidden">
+                  {/* Small concentric gem behind the number */}
+                  <div className="absolute -bottom-6 -right-6 opacity-10">
+                    <ConcentricDiamond size={100} rings={4} variant={s.variant === "gold" ? "gold" : s.variant === "purple" ? "purple" : "magenta"} animated={false} gem />
                   </div>
-                  <div className="font-display font-bold text-4xl md:text-5xl tracking-tight">
-                    {s.value}
+                  <div className="relative">
+                    <div className="flex items-center justify-between mb-4">
+                      <Diamond size={20} variant={s.variant} />
+                      <s.Icon className="h-4 w-4 text-muted-foreground" />
+                    </div>
+                    <div className="font-display font-bold text-4xl md:text-5xl tracking-tight">
+                      {s.value}
+                    </div>
+                    <p className="mt-3 text-sm md:text-base text-muted-foreground leading-relaxed">
+                      {s.label}
+                    </p>
                   </div>
-                  <p className="mt-3 text-sm md:text-base text-muted-foreground leading-relaxed">
-                    {s.label}
-                  </p>
                 </div>
               </Reveal>
             ))}
@@ -155,7 +166,7 @@ const Index = () => {
       </section>
 
       {/* ALUMNI GRID */}
-      <section className="bg-muted/40 py-20 md:py-24 border-y border-border/60">
+      <section className="py-20 md:py-24 grid-pattern-blush border-y border-primary/15">
         <div className="mx-auto max-w-7xl px-5 md:px-8">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground text-center mb-10">
             WE Alumni currently work at
@@ -175,8 +186,15 @@ const Index = () => {
       </section>
 
       {/* WE PROGRAM + WINGS AI */}
-      <section className="py-24 md:py-32">
-        <div className="mx-auto max-w-7xl px-5 md:px-8">
+      <section className="relative py-24 md:py-32 grid-pattern overflow-hidden">
+        {/* Background concentric diamonds */}
+        <div className="pointer-events-none absolute -left-48 -top-24 opacity-15 hidden md:block" aria-hidden>
+          <ConcentricDiamond size={480} rings={7} variant="purple" animated gem={false} />
+        </div>
+        <div className="pointer-events-none absolute -right-24 -bottom-20 opacity-10 hidden md:block" aria-hidden>
+          <ConcentricDiamond size={320} rings={5} variant="magenta" animated={false} gem={false} />
+        </div>
+        <div className="mx-auto max-w-7xl px-5 md:px-8 relative">
           <Reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary mb-4">
               The community behind the event
@@ -188,20 +206,22 @@ const Index = () => {
 
           <div className="mt-14 grid md:grid-cols-2 gap-6">
             <Reveal>
-              <article className="relative h-full overflow-hidden bg-card border border-border rounded-none p-8 md:p-10">
-                <Diamond size={40} variant="magenta" className="mb-8" />
-                <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-2">
-                  WE Program
-                </p>
-                <h3 className="font-display font-bold text-3xl md:text-4xl tracking-tight">
-                  Supported by Google · Offered by TalentSprint
-                </h3>
-                <p className="mt-5 text-base md:text-lg text-muted-foreground leading-relaxed">
-                  Women Engineers (WE) is a 24-month immersive program with in-person bootcamps that selects, trains, and nurtures first-year women engineering students into world-class software engineers.
-                </p>
-                <p className="mt-6 italic text-foreground/80">
-                  Alumni placed at Google, Amazon, Microsoft, Meta, Flipkart & more.
-                </p>
+              <article className="relative h-full overflow-hidden bg-ink text-ink-foreground rounded-none p-8 md:p-10">
+                <DiamondField density="low" tone="dark" />
+                <div className="relative">
+                  <p className="text-xs uppercase tracking-[0.25em] text-ink-foreground/60 mb-2">
+                    WE Program
+                  </p>
+                  <h3 className="font-display font-bold text-3xl md:text-4xl tracking-tight">
+                    Supported by Google · Offered by TalentSprint
+                  </h3>
+                  <p className="mt-5 text-base md:text-lg text-ink-foreground/75 leading-relaxed">
+                    Women Engineers (WE) is a 24-month immersive program with in-person bootcamps that selects, trains, and nurtures first-year women engineering students into world-class software engineers.
+                  </p>
+                  <p className="mt-6 italic text-ink-foreground/85">
+                    Alumni placed at Google, Amazon, Microsoft, Meta, Flipkart & more.
+                  </p>
+                </div>
               </article>
             </Reveal>
 
@@ -209,7 +229,6 @@ const Index = () => {
               <article className="relative h-full overflow-hidden bg-ink text-ink-foreground rounded-none p-8 md:p-10">
                 <DiamondField density="low" tone="dark" />
                 <div className="relative">
-                  <Diamond size={40} variant="gold" className="mb-8" />
                   <p className="text-xs uppercase tracking-[0.25em] text-ink-foreground/60 mb-2">
                     WINGS AI
                   </p>
@@ -229,9 +248,15 @@ const Index = () => {
         </div>
       </section>
 
-      {/* THE EVENT */}
-      <section className="relative py-24 md:py-32 bg-muted/40 border-y border-border/60 overflow-hidden">
-        <DiamondField density="low" />
+      {/* THE EVENT — pink */}
+      <section className="relative py-24 md:py-32 grid-pattern-hot-pink border-y border-primary/20 overflow-hidden">
+        {/* Large concentric diamonds as background art */}
+        <div className="pointer-events-none absolute -left-56 top-1/2 -translate-y-1/2 opacity-25 hidden md:block" aria-hidden>
+          <ConcentricDiamond size={600} rings={9} variant="magenta" animated gem={false} />
+        </div>
+        <div className="pointer-events-none absolute -right-32 -bottom-24 opacity-20 hidden md:block" aria-hidden>
+          <ConcentricDiamond size={380} rings={6} variant="magenta" animated={false} gem={false} />
+        </div>
         <div className="relative mx-auto max-w-7xl px-5 md:px-8">
           <Reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary mb-4">
@@ -245,14 +270,19 @@ const Index = () => {
           <div className="mt-14 grid md:grid-cols-3 gap-5">
             {eventPillars.map((p, i) => (
               <Reveal key={p.title} delay={i * 80}>
-                <div className="h-full bg-card border border-border rounded-none p-8 hover:-translate-y-1 transition-transform duration-300">
-                  <div className="h-14 w-14 rounded-none bg-primary flex items-center justify-center text-primary-foreground mb-6">
-                    <p.Icon className="h-6 w-6" />
+                <div className="h-full bg-card border border-border rounded-none p-8 hover:-translate-y-1 transition-transform duration-300 relative overflow-hidden">
+                  <div className="absolute -bottom-8 -right-8 opacity-10">
+                    <ConcentricDiamond size={120} rings={4} variant="magenta" animated={false} gem />
                   </div>
-                  <p className="font-display font-bold text-2xl md:text-3xl tracking-tight">
-                    {p.title}
-                  </p>
-                  <p className="mt-3 text-muted-foreground leading-relaxed">{p.desc}</p>
+                  <div className="relative">
+                    <div className="h-14 w-14 rounded-none bg-primary flex items-center justify-center text-primary-foreground mb-6">
+                      <p.Icon className="h-6 w-6" />
+                    </div>
+                    <p className="font-display font-bold text-2xl md:text-3xl tracking-tight">
+                      {p.title}
+                    </p>
+                    <p className="mt-3 text-muted-foreground leading-relaxed">{p.desc}</p>
+                  </div>
                 </div>
               </Reveal>
             ))}
@@ -278,40 +308,31 @@ const Index = () => {
         </div>
       </section>
 
-      {/* HOW IT WORKS */}
-      <section className="py-24 md:py-32">
-        <div className="mx-auto max-w-7xl px-5 md:px-8">
+      {/* HOW IT WORKS — HACKATHON MODEL — pink grid */}
+      <section className="relative py-24 md:py-32 grid-pattern-blush border-b border-primary/15 overflow-hidden">
+        <div className="pointer-events-none absolute -right-48 top-1/2 -translate-y-1/2 opacity-20 hidden md:block" aria-hidden>
+          <ConcentricDiamond size={500} rings={7} variant="magenta" animated gem={false} />
+        </div>
+        <div className="relative mx-auto max-w-7xl px-5 md:px-8">
           <Reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary mb-4">
               How it works
             </p>
             <h2 className="font-display font-bold text-4xl md:text-6xl tracking-tight max-w-3xl">
-              The hackathon model.
+              The hackathon <span className="text-primary">model.</span>
             </h2>
           </Reveal>
-
-          <div className="mt-14 grid md:grid-cols-5 gap-4 md:gap-3 relative">
-            {steps.map((s, i) => (
-              <Reveal key={s.n} delay={i * 70}>
-                <div className="relative h-full">
-                  <div className="bg-card border border-border rounded-none p-6 h-full hover:border-primary/50 transition-colors">
-                    <div className="flex items-center gap-3 mb-4">
-                      <Diamond size={18} variant={i % 2 ? "purple" : "magenta"} />
-                      <span className="font-display font-bold text-sm text-muted-foreground">{s.n}</span>
-                    </div>
-                    <p className="font-display font-bold text-lg md:text-xl">{s.title}</p>
-                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          <Timeline steps={steps} inline />
         </div>
       </section>
 
-      {/* AWARDS */}
-      <section className="py-24 md:py-32 bg-muted/40 border-y border-border/60">
-        <div className="mx-auto max-w-7xl px-5 md:px-8">
+      {/* AWARDS — cream grid */}
+      <section className="relative py-24 md:py-32 grid-pattern overflow-hidden">
+        {/* Concentric diamonds as background */}
+        <div className="pointer-events-none absolute -left-40 top-1/2 -translate-y-1/2 opacity-15 hidden md:block" aria-hidden>
+          <ConcentricDiamond size={500} rings={7} variant="gold" animated gem={false} />
+        </div>
+        <div className="relative mx-auto max-w-7xl px-5 md:px-8">
           <Reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary mb-4">
               Awards
@@ -324,24 +345,34 @@ const Index = () => {
           <div className="mt-14 grid md:grid-cols-2 gap-6">
             <Reveal>
               <div className="h-full bg-card border border-border rounded-none p-8 md:p-10 relative overflow-hidden">
-                <Trophy className="absolute -top-6 -right-6 h-40 w-40 text-primary/10" />
-                <Diamond size={32} variant="magenta" className="mb-6" />
-                <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2">Per company</p>
-                <h3 className="font-display font-bold text-3xl">Partner Choice</h3>
-                <p className="mt-4 text-muted-foreground leading-relaxed">
-                  Each partner picks up to <strong className="text-foreground">4 winners</strong> for interview invites, mentorship, or conference funding.
-                </p>
+                <div className="absolute -bottom-10 -right-10 opacity-10">
+                  <ConcentricDiamond size={160} rings={5} variant="magenta" animated={false} gem />
+                </div>
+                <div className="relative">
+                  <Trophy className="absolute top-0 right-0 h-24 w-24 text-primary/10" />
+                  <Diamond size={32} variant="magenta" className="mb-6" />
+                  <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2">Per company</p>
+                  <h3 className="font-display font-bold text-3xl">Partner Choice</h3>
+                  <p className="mt-4 text-muted-foreground leading-relaxed">
+                    Each partner picks up to <strong className="text-foreground">4 winners</strong> for interview invites, mentorship, or conference funding.
+                  </p>
+                </div>
               </div>
             </Reveal>
             <Reveal delay={100}>
               <div className="h-full bg-ink text-ink-foreground rounded-none p-8 md:p-10 relative overflow-hidden">
-                <Sparkles className="absolute -top-4 -right-4 h-32 w-32 text-gold/30" />
-                <Diamond size={32} variant="gold" className="mb-6" />
-                <p className="text-xs uppercase tracking-[0.2em] text-ink-foreground/60 mb-2">Community vote</p>
-                <h3 className="font-display font-bold text-3xl">WE Champion</h3>
-                <p className="mt-4 text-ink-foreground/75 leading-relaxed">
-                  One overall winner chosen by community vote. <strong className="text-gold">The crowd decides.</strong>
-                </p>
+                <div className="absolute -bottom-10 -right-10 opacity-20">
+                  <ConcentricDiamond size={160} rings={5} variant="gold" animated={false} gem />
+                </div>
+                <div className="relative">
+                  <Sparkles className="absolute top-0 right-0 h-20 w-20 text-gold/30" />
+                  <Diamond size={32} variant="gold" className="mb-6" />
+                  <p className="text-xs uppercase tracking-[0.2em] text-ink-foreground/60 mb-2">Community vote</p>
+                  <h3 className="font-display font-bold text-3xl">WE Champion</h3>
+                  <p className="mt-4 text-ink-foreground/75 leading-relaxed">
+                    One overall winner chosen by community vote. <strong className="text-gold">The crowd decides.</strong>
+                  </p>
+                </div>
               </div>
             </Reveal>
           </div>
@@ -349,7 +380,7 @@ const Index = () => {
       </section>
 
       {/* GATEWAYS */}
-      <section className="py-24 md:py-32">
+      <section className="py-24 md:py-32 grid-pattern">
         <div className="mx-auto max-w-7xl px-5 md:px-8">
           <div className="grid md:grid-cols-2 gap-6">
             <Reveal>

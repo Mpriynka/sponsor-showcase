@@ -71,11 +71,6 @@ const Sponsors = () => {
       <section className="relative overflow-hidden bg-ink text-ink-foreground pt-32 md:pt-40 pb-20 md:pb-28">
         <div className="absolute inset-0 grid-pattern-dark" aria-hidden />
         <DiamondField density="medium" tone="dark" />
-        <div
-          className="absolute top-1/2 right-1/4 w-[600px] h-[600px] rounded-none -translate-y-1/2"
-          style={{ background: "var(--gradient-glow)" }}
-          aria-hidden
-        />
         <div className="relative mx-auto max-w-6xl px-5 md:px-8">
           <Reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-ink-foreground/60 mb-5">
@@ -96,7 +91,7 @@ const Sponsors = () => {
       </section>
 
       {/* WHY SPONSOR */}
-      <section className="py-24 md:py-32">
+      <section className="py-24 md:py-32 grid-pattern">
         <div className="mx-auto max-w-7xl px-5 md:px-8">
           <Reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary mb-4">
@@ -128,7 +123,7 @@ const Sponsors = () => {
       </section>
 
       {/* TIERS */}
-      <section className="py-24 md:py-32 bg-muted/40 border-y border-border/60 relative overflow-hidden">
+      <section className="py-24 md:py-32 grid-pattern border-y border-border/60 relative overflow-hidden">
         <DiamondField density="low" />
         <div className="relative mx-auto max-w-7xl px-5 md:px-8">
           <Reveal>
