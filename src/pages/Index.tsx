@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Code2, Youtube, Briefcase, Users, Star, Trophy, Sparkles, Github, Calendar, Send } from "lucide-react";
+import { ArrowRight, Code2, Youtube, Briefcase, Users, Star, Trophy, Sparkles, Calendar, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/Layout";
 import { Seo } from "@/components/Seo";
 import { Diamond, DiamondField } from "@/components/Diamond";
+import { ConcentricDiamond } from "@/components/ConcentricDiamond";
 import { Reveal } from "@/components/Reveal";
 import { CTASection } from "@/components/CTASection";
 import { CALENDLY_URL } from "@/lib/site";
