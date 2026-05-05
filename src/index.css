@@ -45,7 +45,7 @@
     --input: 240 10% 88%;
     --ring: 333 82% 54%;
 
-    --radius: 1rem;
+    --radius: 0.25rem;
 
     --gradient-magenta: linear-gradient(135deg, hsl(333 82% 54%), hsl(290 75% 55%));
     --gradient-ink: linear-gradient(160deg, hsl(248 35% 8%), hsl(260 35% 14%));
