@@ -224,9 +224,6 @@ export default function Contact() {
                   )}
                 </Button>
 
-                <p className="text-xs text-muted-foreground text-center">
-                  We typically respond within 1–2 business days.
-                </p>
               </form>
             </Reveal>
           )}

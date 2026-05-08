@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { Diamond } from "@/components/Diamond";
-import { CONTACT_EMAIL } from "@/lib/site";
 
 export function Footer() {
   return (
@@ -35,9 +34,9 @@ export function Footer() {
             </h4>
             <ul className="space-y-3 text-ink-foreground/80">
               <li>
-                <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-primary transition-colors">
-                  {CONTACT_EMAIL}
-                </a>
+                <Link to="/contact" className="hover:text-primary transition-colors">
+                  Contact us
+                </Link>
               </li>
               <li className="text-ink-foreground/60">June 2026 · Tentative</li>
             </ul>

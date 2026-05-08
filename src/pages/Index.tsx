@@ -209,7 +209,6 @@ const Index = () => {
           <div className="mt-14 grid md:grid-cols-2 gap-6">
             <Reveal>
               <article className="relative h-full overflow-hidden bg-ink text-ink-foreground rounded-none p-8 md:p-10">
-                <DiamondField density="low" tone="dark" />
                 <div className="relative">
                   <p className="text-xs uppercase tracking-[0.25em] text-ink-foreground/60 mb-2">
                     WE Program
@@ -229,7 +228,6 @@ const Index = () => {
 
             <Reveal delay={100}>
               <article className="relative h-full overflow-hidden bg-ink text-ink-foreground rounded-none p-8 md:p-10">
-                <DiamondField density="low" tone="dark" />
                 <div className="relative">
                   <p className="text-xs uppercase tracking-[0.25em] text-ink-foreground/60 mb-2">
                     WINGS AI
@@ -366,9 +364,6 @@ const Index = () => {
             </Reveal>
             <Reveal delay={100}>
               <div className="h-full bg-card border border-border rounded-none p-8 md:p-10 relative overflow-hidden">
-                <div className="absolute -bottom-10 -right-10 opacity-15 pointer-events-none">
-                  <ConcentricDiamond size={180} rings={5} variant="gold" animated={false} gem={false} />
-                </div>
                 <div className="relative">
                   <Sparkles className="absolute top-0 right-0 h-20 w-20 text-gold/30" />
                   {/* Faint small concentric replacing solid Diamond */}
@@ -394,10 +389,6 @@ const Index = () => {
             <Reveal>
               <Link to="/sponsors" className="group block h-full">
                 <div className="relative h-full overflow-hidden bg-ink text-ink-foreground rounded-none p-8 md:p-10 hover:-translate-y-1 transition-all">
-                  <DiamondField density="low" tone="dark" />
-                  <div className="absolute -bottom-10 -right-10 opacity-15 pointer-events-none">
-                    <ConcentricDiamond size={180} rings={5} variant="gold" animated={false} gem={false} />
-                  </div>
                   <div className="relative">
                     <div className="mb-6 opacity-25">
                       <ConcentricDiamond size={40} rings={3} variant="gold" animated={false} gem={false} />
@@ -419,10 +410,6 @@ const Index = () => {
             <Reveal delay={100}>
               <Link to="/sponsors" className="group block h-full">
                 <div className="relative h-full overflow-hidden bg-ink text-ink-foreground rounded-none p-8 md:p-10 hover:-translate-y-1 transition-all">
-                  <DiamondField density="low" tone="dark" />
-                  <div className="absolute -bottom-10 -right-10 opacity-15 pointer-events-none">
-                    <ConcentricDiamond size={180} rings={5} variant="gold" animated={false} gem={false} />
-                  </div>
                   <div className="relative">
                     <div className="mb-6 opacity-70">
                       <ConcentricDiamond size={40} rings={3} variant="gold" animated={false} gem={false} />
